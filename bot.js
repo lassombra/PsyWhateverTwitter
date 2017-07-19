@@ -12,10 +12,11 @@ var phraseArray = [
 	'This is not a real Aywas emergency',
 	'Aywas bot 4 life!',
 	'Signs you might be addicted to aywas: You made a bot for scav',
-	'Tired of cats? Try a Melo!'
+	'Tired of cats? Try a Melo!',
+	'Don\'t be a square! Collect pixel pets!'
 ];
 function chooseRandom(myArray) {
 	return myArray[Math.floor(Math.random() * myArray.length)];
 }
-var phrase = chooseRandom(phraseArray) + ", " + chooseRandom(phraseArray);
+var phrase = chooseRandom(phraseArray);
 Bot.tweet(phrase);
