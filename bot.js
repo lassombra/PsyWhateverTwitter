@@ -15,7 +15,6 @@ var Api = new Twit({
 Api.get('statuses/user_timeline', {count: 36}, function(err, data) {
 	console.log(data);
 });
-let currentTweets = Bot.
 var phraseArray = [
 	'Aywas rulez',
 	'This is a major test of the emergency Aywas broadcasting system',
