@@ -12,9 +12,6 @@ var Api = new Twit({
 	access_token: process.env.BOT_ACCESS_TOKEN,
 	access_token_secret: process.env.BOT_ACCESS_TOKEN_SECRET
 });
-Api.get('statuses/user_timeline', {count: 36}, function(err, data) {
-	console.log(data);
-});
 var phraseArray = [
 	'Aywas rulez',
 	'This is a major test of the emergency Aywas broadcasting system',
@@ -79,6 +76,27 @@ function phrase() {
 function chooseRandom(myArray) {
 	return myArray[Math.floor(Math.random() * myArray.length)];
 }
-var thisPhrase = chooseRandom([addict, mustHave, hotOrNot, phrase])();
-thisPhrase += ' Join Aywas: http://www.aywas.com/register/referral/407/';
-Bot.tweet(thisPhrase);
+function generatePhrase() {
+	var thisPhrase = chooseRandom([addict, mustHave, hotOrNot, phrase])();
+	thisPhrase += ' Join Aywas: http://www.aywas.com/register/referral/407/';
+	return thisPhrase;
+}
+Api.get('statuses/user_timeline', {count: 36}, function(err, data) {
+	var tweets = data.map(function(tweet) {
+		return tweet.text;
+	});
+	var valid = false;
+	var tweetPhrase = generatePhrase();
+	while (!valid) {
+		valid = true;
+		for (var i = 0; i < tweets.length; i++) {
+			if (tweets[i] == tweetPhrase) {
+				valid = false;
+			}
+		}
+		if (!valid) {
+			tweetPhrase = generatePhrase();
+		}
+	}
+	Bot.tweet(tweetPhrase);
+});
