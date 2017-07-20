@@ -6,6 +6,16 @@ var Bot = new TwitterBot({
 	access_token: process.env.BOT_ACCESS_TOKEN,
 	access_token_secret: process.env.BOT_ACCESS_TOKEN_SECRET
 });
+var Api = new Twit({
+	consumer_key: process.env.BOT_CONSUMER_KEY,
+	consumer_secret: process.env.BOT_CONSUMER_SECRET,
+	access_token: process.env.BOT_ACCESS_TOKEN,
+	access_token_secret: process.env.BOT_ACCESS_TOKEN_SECRET
+});
+Api.get('statuses/user_timeline', {count: 36}, function(err, data) {
+	console.log(data);
+});
+let currentTweets = Bot.
 var phraseArray = [
 	'Aywas rulez',
 	'This is a major test of the emergency Aywas broadcasting system',
