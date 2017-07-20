@@ -26,7 +26,8 @@ var addictArray = [
 	'You plan your week according to Aywas events',
 	'You simply NEED that mayday Teo/Snoodle/Faux/Oët',
 	'You realize you\'ve spent hundreds or thousands of dollars on the site',
-	'You begin referring to your self by your Aywas username'
+	'You begin referring to your self by your Aywas username',
+	'You can mask a Melo\'s or Teo\'s tail in your sleep'
 ];
 var mustHavesArray = [
 	'Breeding Pendant',
