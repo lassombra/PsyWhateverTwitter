@@ -78,12 +78,11 @@ function chooseRandom(myArray) {
 }
 function generatePhrase() {
 	var thisPhrase = chooseRandom([addict, mustHave, hotOrNot, phrase])();
-	thisPhrase += ' Join Aywas: http://www.aywas.com/register/referral/407/';
 	return thisPhrase;
 }
 Api.get('statuses/user_timeline', {count: 36}, function(err, data) {
 	var tweets = data.map(function(tweet) {
-		return tweet.text;
+		return tweet.text.split(' Join Aywas')[0];
 	});
 	var valid = false;
 	var tweetPhrase = generatePhrase();
@@ -98,5 +97,6 @@ Api.get('statuses/user_timeline', {count: 36}, function(err, data) {
 			tweetPhrase = generatePhrase();
 		}
 	}
+	tweetPhrase += ' Join Aywas: http://www.aywas.com/register/referral/407/';
 	Bot.tweet(tweetPhrase);
 });
