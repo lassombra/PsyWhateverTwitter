@@ -11,12 +11,64 @@ var phraseArray = [
 	'This is a major test of the emergency Aywas broadcasting system',
 	'This is not a real Aywas emergency',
 	'Aywas bot 4 life!',
-	'Signs you might be addicted to aywas: You made a bot for scav',
 	'Tired of cats? Try a Melo!',
 	'Don\'t be a square! Collect pixel pets!'
 ];
+var addictArray = [
+	'You made a bot for a user run contest for pixel currency',
+	'You made a bot for scav',
+	'You have been adventuring the last 14 hours',
+	'Sleep?  What is sleep?',
+	'You start referring to your money as USD, BP, and GP',
+	'You name your pets off of an Aywas creature, instead of the other way around',
+	'SCAV!',
+	'You refer to Jak, Eve, or Mauri as a sibling, a parent, or a god',
+	'You plan your week according to Aywas events',
+	'You simply NEED that mayday Teo/Snoodle/Faux/Oët',
+	'You realize you\'ve spent hundreds or thousands of dollars on the site',
+	'You begin referring to your self by your Aywas username'
+];
+var mustHavesArray = [
+	'Breeding Pendant',
+	'Glittering Slab',
+	'Miniature Phoenix Tree',
+	'Mini Fridge',
+	'Platinum Breeding Coin',
+	'Slashbot'
+];
+var hotOrNotArray = [
+	'short skirts and flowy hair',
+	'cute tank tops',
+	'mermaid tails',
+	'dresses',
+	'wings, wings, wings!',
+	'a beautiful location',
+	'business suits',
+	'Aywas fursuits',
+	'over accessorizing'
+];
+function addict() {
+	return 'You might be addicted to aywas if: ' + choosRandom(addictArray);
+}
+function mustHave() {
+	return chooseRandom(['You aren\'t truly an aywas addict unless you have ', 'No adventure on aywas complete without ']) +
+			chooseRandom(mustHavesArray);
+}
+function hotOrNot() {
+	return chooseRandom([
+		'Latest trend in aywas clothing? ',
+		'Who comes up with these styles? ',
+		'So I saw on aywas today '
+	]) +
+			chooseRandom(hotOrNotArray) +
+			'!  What do you think?  Hot? or Not?';
+}
+function phrase() {
+	return chooseRandom(phraseArray);
+}
 function chooseRandom(myArray) {
 	return myArray[Math.floor(Math.random() * myArray.length)];
 }
-var phrase = chooseRandom(phraseArray);
-Bot.tweet(phrase);
+var thisPhrase = chooseRandom([addict, mustHave, hotOrNot, phrase])();
+thisPhrase += ' Join Aywas: http://www.aywas.com/register/referral/407/';
+Bot.tweet(thisPhrase);
