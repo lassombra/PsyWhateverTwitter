@@ -55,7 +55,7 @@ var hotOrNotArray = [
 	'over accessorizing'
 ];
 function addict() {
-	return 'You might be addicted to aywas if: ' + choosRandom(addictArray);
+	return 'You might be addicted to aywas if: ' + chooseRandom(addictArray);
 }
 function mustHave() {
 	return chooseRandom(['You aren\'t truly an aywas addict unless you have ', 'No adventure on aywas complete without ']) +
